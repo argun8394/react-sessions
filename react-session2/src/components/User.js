@@ -1,20 +1,22 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types';
 
-
+//satate vermenin 2 yolu var 1-constructor içinde 2-bu class ın en tepesinde oluşturmak
  class User extends Component {
-
-  //defaultProps un static olarakta bu şekilde kullanabiliriz
-  static defaultProps = {
-    name: "no information",
-    department: "no information",
-    salary: "no information"
+  state = {
+    isVisible : false
   }
 
+  // constructor (props){
+  //   super(props);///inheritance ilişkisi
+
+  //   this.state = {
+  //     isVisible: false //görünürlük için
+  //   }
+  // }
   render() {
 
-  
     const {name, department, salary } = this.props;
+    const {isVisible} = this.state; //isVisible değerini destructhing ile alabiliriz
 
     return (
       <div className="col-md-8 mb-4">
@@ -23,27 +25,21 @@ import PropTypes from 'prop-types';
             <h4 className="d-inline">{name}</h4>
             <i className="fa-solid fa-trash-can" style={{cursor : 'pointer'}}></i>
         </div>
-        <div className="card-body">
+
+      {/* isVisible değeri tru olduğunda card-body görünür olur */}
+        {
+          isVisible ? <div className="card-body">
           <p className="card-text">Salary : {salary}</p>
           <p className="card-text">Department : {department}</p>
-
-        </div>
-
-        </div>
+         
+        </div> : null
+        }
 
         
+        </div>        
       </div>
     )
   }
 }
-
-//propTypes kullanımı
-User.propTypes = {
-  name: PropTypes.string.isRequired,
-  department: PropTypes.string.isRequired,
-  salary: PropTypes.string.isRequired
-}
-
-
 
 export default User;
