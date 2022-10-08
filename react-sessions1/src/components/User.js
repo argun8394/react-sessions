@@ -8,7 +8,7 @@ import React from 'react'
     <div>
         <ul>
             <li>name : {props.name} </li>
-            <li>Depatment : {props.department} </li>
+            <li>Department : {props.department} </li>
             <li>Salary : {props.salary} </li>
         </ul>
 

@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
+
 
  class User2 extends Component {
+
+  //defaultProps un static olarakta bu şekilde kullanabiliriz
+  static defaultProps = {
+    name: "no information",
+    department: "no information",
+    salary: "no information"
+  }
+
   render() {//render method u class component için kullanılır
 
     //Destructing  ES6 ile gelen bir kullanım şeklidir
@@ -11,7 +21,7 @@ import React, { Component } from 'react'
       <div>
          <ul>
          <li>name : {name} </li> {/* with destructing */} 
-            <li>Depatment : {department} </li> {/*  destructing ile kullanım */}
+            <li>Department : {department} </li> {/*  destructing ile kullanım */}
             <li>Salary : {salary} </li> {/*  destructing  ile kullanım*/}
             
             {/* <li>name : {this.props.name} </li>// class component kullanımı bu şekilde this ile propsu kullanıyoruz
@@ -22,5 +32,21 @@ import React, { Component } from 'react'
     )
   }
 }
+
+//propTypes kullanımı
+User2.propTypes = {
+  name: PropTypes.string.isRequired,
+  department: PropTypes.string.isRequired,
+  salary: PropTypes.string.isRequired
+}
+
+//defaultProps kullanımı
+// User2.defaultProps = {
+//   name: "no information",
+//   department: "no information",
+//   salary: "no information"
+// } 
+
+
 export default User2;
 //User2 class component olduğundan props kullanımı this keyword u ile yapılır.
