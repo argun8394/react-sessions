@@ -2,6 +2,7 @@ import './App.css';
 import Navbar from './components/Navbar'
 import React, { Component } from 'react'
 import Users from './components/Users';
+import AddUser from './components/AddUser'
 
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
      
         <Navbar title="User App" />
         <hr/>
+        <AddUser/>
          <Users />{/*userlarımızı dinamik birşekilde state ile props olarak gönderiyoruz   */}
        
     </div>
