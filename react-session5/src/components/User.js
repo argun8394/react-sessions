@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import UserConsumer from '../context'
 
  class User extends Component {
 
@@ -20,9 +21,11 @@ onClickEvent = (e)=>{
 console.log(this)
 }
 
-onDeleteUser = (e)=>{
-  //const {id} = this.props;
+onDeleteUser = (dispatch, e)=>{
+  const {id} = this.props;
   //consumer Dispatch gelecek buraya
+  dispatch({type : "DELETE_USER", payload: id})
+
 }
   render() {
     
@@ -30,12 +33,18 @@ onDeleteUser = (e)=>{
     const {isVisible} = this.state; //isVisible değerini destructhing ile alabiliriz
 
     return (
+      <UserConsumer>
+        {
+          value => {
+            const {dispatch} = value;
+
+              return (
         <div className="col-md-8 mb-4">
         <div className="card">
           <div className="card-header d-flex justify-content-between">
              
              <h4 className="d-inline" onClick={this.onClickEvent}>{name}</h4>
-            <i onClick = {this.onDeleteUser } className="fa-solid fa-trash-can" style={{cursor : 'pointer'}}></i>
+            <i onClick = {this.onDeleteUser.bind(this,dispatch) } className="fa-solid fa-trash-can" style={{cursor : 'pointer'}}></i>
         </div>
 
      
@@ -51,6 +60,12 @@ onDeleteUser = (e)=>{
         </div>        
       </div>
     )
+          }
+        }
+      </UserConsumer>
+    )
+
+    
   }
 }
     

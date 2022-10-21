@@ -1,6 +1,19 @@
 import React, { Component } from 'react'
 
+
 const UserContext = React.createContext();
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "DELETE_USER":
+      return {
+        ...state,
+        users: state.users.filter(user => action.payload !== user.id)
+      }
+    default: 
+      return state;
+  }
+}
 
 export class UserProvider extends Component { //default olarak export etmiyoruz
     state = {
@@ -23,12 +36,15 @@ export class UserProvider extends Component { //default olarak export etmiyoruz
             salary : "4000",
             department : "Üretim"
           }
-        ]
+        ],
+        dispatch : action => {
+          this.setState(state => reducer(state, action))
+        }
       }
   render() {
     return (
         //provider ile sarmallama yapıyoruz
-      <UserContext.Provider value={this.state}>//burada div yerine UserContext.Provider döneriz
+      <UserContext.Provider value={this.state}>{/*burada div yerine UserContext.Provider döneriz*/}
         {this.props.children}
 
       </UserContext.Provider>
