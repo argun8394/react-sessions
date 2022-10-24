@@ -19,7 +19,10 @@ const Animation = posed.div({
 class AddUser extends Component {
   
   state = {
-    visible : false
+    visible : false,
+    name : '',
+    department : '',
+    salary : ''
   }
   changeVisibility = (e) => {
     this.setState({ 
@@ -27,8 +30,29 @@ class AddUser extends Component {
     })
   }
 
+  changeInput = (e) => {
+    this.setState({
+      [e.target.name] : e.target.value
+    })
+  }
+// changeName = (e) => {
+//   this.setState({
+//     name : e.target.value
+//   })
+//   }
+//   changeDepartment = (e) => {
+//     this.setState({
+//       department : e.target.value
+//     })
+//   }
+//   changeSalary = (e) => {
+//     this.setState({
+//       salary : e.target.value
+//     })
+//   }
+
   render() {
-    const { visible} = this.state;
+    const { visible, name, department, salary } = this.state;
     return (
       <div className="col-md-8 mb-4">
          <div className="d-grid gap-1">
@@ -45,17 +69,17 @@ class AddUser extends Component {
 
                     <div className="form-group mb-2">
                         <label htmlFor="name">Name</label>
-                        <input type="text" name="name" id="id" placeholder="Enter   name" className="form-control"/>
+                        <input type="text" name="name" id="id" placeholder="Enter   name" className="form-control" value = {name} onChange={this.changeInput}/>
                     </div>
 
                     <div className="form-group mb-2">
                         <label htmlFor="department">department</label>
-                        <input type="text" name="department" id="department" placeholder="Enter department" className="form-control"/>
+                        <input type="text" name="department" id="department" placeholder="Enter department" className="form-control" value = {department} onChange={this.changeInput}/>
                     </div>
 
                     <div className="form-group mb-2">
                         <label htmlFor="salary">salary</label>
-                        <input type="text" name="salary" id="salary" placeholder="Enter salary" className="form-control"/>
+                        <input type="text" name="salary" id="salary" placeholder="Enter salary" className="form-control" value = {salary} onChange={this.changeInput}/>
                     </div>
 
                     <div className="d-grid gap-1">
