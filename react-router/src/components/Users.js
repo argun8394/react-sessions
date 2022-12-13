@@ -8,7 +8,7 @@ function Users() {
   const [users, setUsers]= useState([])
   const [loading,setLoading] = useState(true);
 
-  const {path, url} = useRouteMatch();//Nesting route için
+  const {path, url} = useRouteMatch();//içiçe route yöntemi için
 
   useEffect(() => {
     axios('https://jsonplaceholder.typicode.com/users')
@@ -33,7 +33,7 @@ function Users() {
         <Route exact path={path}>
           <h3>Please select a user</h3>
         </Route>
-        <Route path={ `${path}/:id`} component={User}></Route>
+        <Route path={ `${path}/:id`} component={User}/>
       </Switch>
     </div>
   )

@@ -8,7 +8,7 @@ function User() {
 
     const [user, setUser]= useState({});
 
-    const {id} = useParams();
+    const {id} = useParams();//url paramtre kullanımı için 
 
     useEffect(() => {
         axios(`https://jsonplaceholder.typicode.com/users/${id}`)
