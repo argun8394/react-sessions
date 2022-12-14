@@ -14,7 +14,7 @@ function User() {
         axios(`https://jsonplaceholder.typicode.com/users/${id}`)
         .then((res) =>setUser(res.data))
         .finally( () =>setLoading(false))        
-    }, [])
+    }, [id])//id ye bağımlılık vererek her id değişiminde useEffect tetiklenecek
     
   return (
     <div>
