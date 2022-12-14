@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Users from "./components/Users";
 // import User from "./components/User";
+import ErrorPage from "./components/ErrorPage";
 
 
 
@@ -15,7 +16,8 @@ function App() {
         <nav>
           <ul>
             <li>
-             <NavLink activeClassName='active' exact to="/">Home</NavLink>  {/* Navlink ile active classı kullanıp aktif olan link görselini değitirebiliyoruz */}
+             <NavLink activeClassName='active' exact to="/">Home</NavLink>  {/* Navlink ile active classı kullanıp aktif olan link görselini değitirebiliyoruz 
+             inline olarak activeStyle içinde de yazabiliriz*/}
             </li>
             <li>
               <NavLink activeClassName='active' to="/about">About</NavLink>
@@ -33,6 +35,7 @@ function App() {
           <Route path="/about" component={About} />
           <Route path="/users" component={Users} />          
           {/* <Route path="/user/:id" component={User} /> */}
+          <Route path="*" component={ErrorPage}/>
 
         </Switch>
       </div>
