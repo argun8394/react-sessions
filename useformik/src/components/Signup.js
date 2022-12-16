@@ -4,7 +4,7 @@ import validationSchema from './validations';
 
 function Signup() {
     //useFormik ile daha sade bir yapı oluşturmuş olduk
-   const {handleSubmit, handleChange, values} = useFormik({
+   const {handleSubmit, handleChange, handleBlur, values, errors, touched} = useFormik({
     initialValues: {
        email: '',
        password: '',
@@ -22,19 +22,27 @@ function Signup() {
         
           <form onSubmit={handleSubmit}>
           <label >Email</label>
-          <input name="email" onChange={handleChange} value={values.firstName}/> {/* handleChange kullanmadığımızda inputa girilen değer value ya yansımaz boş görünür*/}
+          <input name="email" onChange={handleChange} onBlur={handleBlur} value={values.firstName}/> {/* handleChange kullanmadığımızda inputa girilen değer value ya yansımaz boş görünür*/}
            {/*name initialValues taki firstName verilmelidir  */}
            {/*value={values.firstName} initialValue daki değerin yansıtılmasını sağlar*/}
+
+          { errors.email && touched.email && (<div className="error">{errors.email}</div>)}
+
           <br />
           <br />
 
           <label>Password</label>
-          <input name="password" onChange={handleChange} value={values.password}/>
+          <input name="password" onChange={handleChange} onBlur={handleBlur} value={values.password}/>
+          {/* onBlur={handleBlur} sayesinde input üzerinde blur olup hata mesajını yakalamayı sağlar */}
+
+          { errors.password && touched.password && (<div className="error">{errors.password}</div>)}
           <br />
           <br />
 
           <label >Confirm Password</label>
-          <input name="confirmPassword" onChange={handleChange} value={values.confirmPassword}/>
+          <input name="confirmPassword" onChange={handleChange} onBlur={handleBlur} value={values.confirmPassword}/>
+
+          { errors.confirmPassword && touched.confirmPassword && (<div className="error">{errors.confirmPassword}</div>)}
           <br />
           <br />
 
