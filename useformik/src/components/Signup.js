@@ -3,64 +3,64 @@ import { useFormik } from 'formik';
 import validationSchema from './validations';
 
 function Signup() {
-    //useFormik ile daha sade bir yapı oluşturmuş olduk
-   const {handleSubmit, handleChange, handleBlur, values, errors, touched} = useFormik({
+  //useFormik ile daha sade bir yapı oluşturmuş olduk
+  const { handleSubmit, handleChange, handleBlur, values, errors, touched } = useFormik({
     initialValues: {
-       email: '',
-       password: '',
-       confirmPassword: '',  
-     },
-     onSubmit: (values) => {
-        console.log(values);
-     },
-     validationSchema
-   });
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+    validationSchema
+  });
   return (
     <div>
-        
-        <h1>Sign Up</h1>
-        
-          <form onSubmit={handleSubmit}>
-          <label >Email</label>
-          <input name="email" onChange={handleChange} onBlur={handleBlur} value={values.firstName}/> {/* handleChange kullanmadığımızda inputa girilen değer value ya yansımaz boş görünür*/}
-           {/*name initialValues taki firstName verilmelidir  */}
-           {/*value={values.firstName} initialValue daki değerin yansıtılmasını sağlar*/}
 
-          { errors.email && touched.email && (<div className="error">{errors.email}</div>)}
+      <h1>Sign Up</h1>
 
-          <br />
-          <br />
+      <form onSubmit={handleSubmit}>
+        <label >Email</label>
+        <input name="email" onChange={handleChange} onBlur={handleBlur} value={values.firstName} /> {/* handleChange kullanmadığımızda inputa girilen değer value ya yansımaz boş görünür*/}
+        {/*name initialValues taki firstName verilmelidir  */}
+        {/*value={values.firstName} initialValue daki değerin yansıtılmasını sağlar*/}
 
-          <label>Password</label>
-          <input name="password" onChange={handleChange} onBlur={handleBlur} value={values.password}/>
-          {/* onBlur={handleBlur} sayesinde input üzerinde blur olup hata mesajını yakalamayı sağlar */}
+        {errors.email && touched.email && (<div className="error">{errors.email}</div>)}
 
-          { errors.password && touched.password && (<div className="error">{errors.password}</div>)}
-          <br />
-          <br />
+        <br />
+        <br />
 
-          <label >Confirm Password</label>
-          <input name="confirmPassword" onChange={handleChange} onBlur={handleBlur} value={values.confirmPassword}/>
+        <label>Password</label>
+        <input name="password" onChange={handleChange} onBlur={handleBlur} value={values.password} />
+        {/* onBlur={handleBlur} sayesinde input üzerinde blur olup hata mesajını yakalamayı sağlar */}
 
-          { errors.confirmPassword && touched.confirmPassword && (<div className="error">{errors.confirmPassword}</div>)}
-          <br />
-          <br />
+        {errors.password && touched.password && (<div className="error">{errors.password}</div>)}
+        <br />
+        <br />
 
-          {/* <span>Male</span>
+        <label >Confirm Password</label>
+        <input name="confirmPassword" onChange={handleChange} onBlur={handleBlur} value={values.confirmPassword} />
+
+        {errors.confirmPassword && touched.confirmPassword && (<div className="error">{errors.confirmPassword}</div>)}
+        <br />
+        <br />
+
+        {/* <span>Male</span>
           <input type="radio" name="gender" value="male" onChange={handleChange} checked={values.gender === 'male'}/> {/*checked={values.gender === 'male'} initialValue da verilen değerin işlenmiş halde gelmesini sağlar */}
 
-         {/* <span>Female</span>
-          <input type="radio" name="gender" value="female" onChange={handleChange} checked={values.gender === 'female'}/> */}    
-         
+        {/* <span>Female</span>
+          <input type="radio" name="gender" value="female" onChange={handleChange} checked={values.gender === 'female'}/> */}
 
-          <button type="submit">Submit</button>
-          <br />
-          <br />
 
-          {JSON.stringify(values)}
+        <button type="submit">Submit</button>
+        <br />
+        <br />
 
-        </form>
-              
+        {JSON.stringify(values)}
+
+      </form>
+
     </div>
   )
 }
