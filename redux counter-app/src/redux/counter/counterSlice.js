@@ -5,6 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 //createSlice taki name üzerinden satate ulaşırız "state.counter şeklinde " devam eden ifade üzerinden ulaşıyoruz
 //initialState state in ilk değerini ifade eder
 //reducers ise state i güncelleyecek tanımlamaların yani fonksiyonların  yazıldığı yer
+//createSlice ta state in name initialState ve reducer varsayılan tanımlamalarını yapıyoruz
 
 export const counterSlice = createSlice({
     name: 'counter',
@@ -26,7 +27,7 @@ export const counterSlice = createSlice({
     }
 });
 
-//reducer içinde yazmış olduğumuz fonksiyonları kullanabilmek için ""{ increment } = counterSlice.actions;"" bu şekilde export etmemiz gerekir
+//reducer içinde yazmış olduğumuz fonksiyonları kullanabilmek için ""{ increment } = counterSlice.actions;"" bu şekilde export etmemiz gerekir dispatch edilmek üzere
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 
 export default counterSlice.reducer; //reducer ı bu şekilde dışarı aktarıyoruz
